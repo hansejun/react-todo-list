@@ -101,4 +101,8 @@ IForm {
   });
  >>  useForm({ defaultValues: { ... } })에서 디폴트 값을 설정해줄 수 있다.
 
- 
+---------------------------------------------------------------------
+[ useForm - setError ]
+- setError("name",{});
+- setError의 세번째 인자는 선택이다.
+- setError("name",{message:"Check your name"},{sholdFocus:true})
