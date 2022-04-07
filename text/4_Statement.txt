@@ -29,6 +29,10 @@ export const isDarkAtom = atom({
 - 이 setterFn은 usestate에서 setter fn와 같은 기능을 한다.
 
  ---------------------------------------------------------------------
+[ atom의 값과 setter 함수를 같이 불러오기 ]
+- const [value, modFn] = useRecoilState(toDoState)
+
+ ---------------------------------------------------------------------
  [ React hook form ]
  - npm i react-hook-form
  - 사용하기 위해서는 useForm이라는 hook을 import한다.
@@ -103,6 +107,27 @@ IForm {
 
 ---------------------------------------------------------------------
 [ useForm - setError ]
+- 에러를 생성, 발생 시킬 수 있다.
 - setError("name",{});
 - setError의 세번째 인자는 선택이다.
 - setError("name",{message:"Check your name"},{sholdFocus:true})
+
+---------------------------------------------------------------------
+[ useForm - setValue ]
+- 값을 정할 수 있다.
+- setValue("toDo","")
+- toDo라는 이름을 가진 register의 값을 빈문자열로 한다.
+
+---------------------------------------------------------------------
+[ validate ]
+- 조건을 만들어 유효성 검사를 할 수 있다. true일 경우 패스, false일 경우 message에 저장된다.
+<input
+  {...register("name", {
+      required: "Check your name",
+      validate: {
+        noHan: (value) => (value.includes("han") ? "No han" : true),
+      },
+  })}
+/>
+
+<span>{errors?.name?.message}</span>      << message를 통해서 반환된 string을 전달할 수 있다.
