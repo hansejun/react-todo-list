@@ -34,9 +34,20 @@ export const isDarkAtom = atom({
 - value는 globalState value, modFn은 globalState의 setter or updater
 
  ---------------------------------------------------------------------
+[ selector ]
+- atom의 output을 변형시키는 도구이다.
+- import { atom,selector } from "recoil";
+- selector에는 key와 getMethod가 있다.
 
+export const toDoSelector = selector({
+  key: "toDoSelector",
+  get: ({ get }) => {
+    const toDos = get(toDoAtom);
+    return toDos.length;
+  },
+});
 
-
+- toDoAtom의 값이 바뀔 때마다 toDoSelector의 값도 변경된다.
 
 
 

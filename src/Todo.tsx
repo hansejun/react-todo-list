@@ -7,7 +7,7 @@ import styled from "styled-components";
 const Container = styled.div`
   width: 400px;
   min-height: 250px;
-  padding: 20px;
+  padding: 30px 20px 20px 20px;
   background-color: rgba(235, 236, 240, 0.95);
   box-shadow: 0px 0px 10px #babecc;
   margin: 0 auto;
@@ -25,6 +25,10 @@ const SelectBox = styled.div`
   display: flex;
   justify-content: center;
   margin-bottom: 20px;
+  select {
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    color: rgba(0, 0, 0, 0.6);
+  }
 `;
 const List = styled.div`
   display: flex;

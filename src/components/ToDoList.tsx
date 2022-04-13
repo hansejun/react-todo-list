@@ -14,6 +14,7 @@ const Li = styled.li`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  opacity: 1;
   div {
     button {
       border: none;
@@ -42,7 +43,7 @@ function ToDoList({ text, category, id }: IToDo) {
     const {
       currentTarget: { name },
     } = event;
-
+    console.log(event.currentTarget.parentElement)
     setToDos((preTodo) => {
       const targetIndex = preTodo.findIndex((todo) => todo.id === id);
       const newTodo = { text, id, category: name as any };
