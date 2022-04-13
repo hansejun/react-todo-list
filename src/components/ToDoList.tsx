@@ -1,6 +1,40 @@
 import React from "react";
 import { useSetRecoilState } from "recoil";
-import { IToDo, toDoAtom } from "../atoms";
+import styled from "styled-components";
+import { Categories, IToDo, toDoAtom } from "../atoms";
+
+const Li = styled.li`
+  padding: 15px 15px;
+  background-color: rgba(235, 236, 240, 0.95);
+  box-shadow: 0px 0px 10px #babecc;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  list-style: none;
+  color: black;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  div {
+    button {
+      border: none;
+      background-color: inherit;
+      margin-left: 5px;
+      font-size: 12px;
+      cursor: pointer;
+      color: rgba(0, 0, 0, 0.5);
+      &:hover {
+        color: rgba(0, 0, 0, 1);
+        font-weight: 500;
+      }
+    }
+    button:last-child {
+      color: #e74c3c;
+      &:hover {
+        font-weight: 600;
+      }
+    }
+  }
+`;
 
 function ToDoList({ text, category, id }: IToDo) {
   const setToDos = useSetRecoilState(toDoAtom);
@@ -20,25 +54,34 @@ function ToDoList({ text, category, id }: IToDo) {
     });
   };
 
+  const handleDelete = (event: React.MouseEvent<HTMLButtonElement>) => {
+    setToDos((preTodo) => {
+      const newTodos = [...preTodo].filter((item) => item.id !== id);
+      return [...newTodos];
+    });
+  };
   return (
-    <li>
-      <span>{text}</span>
-      {category !== "TO_DO" && (
-        <button name="TO_DO" onClick={onClick}>
-          TO DO
-        </button>
-      )}
-      {category !== "DOING" && (
-        <button name="DOING" onClick={onClick}>
-          DOING
-        </button>
-      )}
-      {category !== "DONE" && (
-        <button name="DONE" onClick={onClick}>
-          DONE
-        </button>
-      )}
-    </li>
+    <Li>
+      <h3>{text}</h3>
+      <div>
+        {category !== Categories.TO_DO && (
+          <button name={Categories.TO_DO} onClick={onClick}>
+            TO DO
+          </button>
+        )}
+        {category !== Categories.DOING && (
+          <button name={Categories.DOING} onClick={onClick}>
+            DOING
+          </button>
+        )}
+        {category !== Categories.DONE && (
+          <button name={Categories.DONE} onClick={onClick}>
+            DONE
+          </button>
+        )}
+        <button onClick={handleDelete}>DELETE</button>
+      </div>
+    </Li>
   );
 }
 

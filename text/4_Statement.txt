@@ -31,8 +31,17 @@ export const isDarkAtom = atom({
  ---------------------------------------------------------------------
 [ atom의 값과 setter 함수를 같이 불러오기 ]
 - const [value, modFn] = useRecoilState(toDoState)
+- value는 globalState value, modFn은 globalState의 setter or updater
 
  ---------------------------------------------------------------------
+
+
+
+
+
+
+
+
  [ React hook form ]
  - npm i react-hook-form
  - 사용하기 위해서는 useForm이라는 hook을 import한다.
