@@ -29,7 +29,7 @@ const BoardInput = styled.input`
   height: 40px;
   background-color: white;
   border: none;
-  padding: 0 10px;
+  padding: 0 15px;
   border-radius: 7px 0px 0px 7px;
   &:focus {
     outline: none;
@@ -117,7 +117,10 @@ function App() {
     <DragDropContext onDragEnd={onDragEnd}>
       <Wrapper>
         <AddForm onSubmit={handleSubmit(onValid)}>
-          <BoardInput {...register("board", { required: true })} />
+          <BoardInput
+            {...register("board", { required: true })}
+            placeholder="Create a list"
+          />
           <AddBtn>Create</AddBtn>
         </AddForm>
         <Boards len={boardLen}>
