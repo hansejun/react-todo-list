@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import { Droppable } from "react-beautiful-dnd";
 import { useForm } from "react-hook-form";
-import { IForm } from "../App";
 import { ITodo, todoState } from "../atoms";
 import { useRecoilState } from "recoil";
 import Card from "./Card";
@@ -130,7 +129,6 @@ function Board({ todos, boardId }: IBoard) {
   const onClick = () => {
     setTodos2((allBoards) => {
       let newBoards = { ...allBoards };
-      console.log(allBoards);
       delete newBoards[boardId];
       return newBoards;
     });
